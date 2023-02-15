@@ -40,11 +40,11 @@ function SunriseAndSunset({ data }) {
     <div className="sunrise-sunset">
       <div className="sunrise-box">
         <p>{sunriseTime}</p>
-        <img src="/img/icons/sunrise.png" alt="sunrise" />
+        <img src="/WeatherSite/img/icons/sunrise.png" alt="sunrise" />
       </div>
 
       <div className="sunset-box">
-        <img src="/img/icons/sunset.png" alt="sunrise" />
+        <img src="/WeatherSite/img/icons/sunset.png" alt="sunrise" />
         <p>{sunsetTime}</p>
       </div>
     </div>
