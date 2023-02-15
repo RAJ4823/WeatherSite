@@ -7,5 +7,6 @@ export default defineConfig({
         port: 80,
         host: true,
     },
+    base: '/WeatherSite/',
     plugins: [react()],
 })
