@@ -12,7 +12,7 @@ export default function DefaultBgSelection({ onChange }) {
   }
 
   function ThumbnailImage({ num }) {
-    const source = `../../img/default/thumbnail${num}.jpg`;
+    const source = `../img/default/thumbnail${num}.jpg`;
     return (
       <div className="thumbnail-container">
         <label htmlFor={`thumbnail${num}`}>
