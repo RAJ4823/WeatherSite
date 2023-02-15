@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+:root {
+    /* default accent colors */
+    --img0: #3794ff;
+    --img1: #ff7a89;
+    --img2: #00d39b;
+    --img3: #fca4a9;
+    --img4: #ffb300;
+    --img5: #4ceff4;
+
+    /* weather accent colors */
+    --d-clear: #75c3ff;
+    --d-clouds: #9fbfff;
+    --d-rain: #b4effe;
+    --d-snow: #c8e4fe;
+
+    --drizzle: #2afe86;
+    --dust: #ffc494;
+    --fog: #a4bedf;
+    --haze: #d0d796;
+    --mist: #8ce1cc;
+    --smoke: var(--haze);
+    --squll: #efc589;
+    --thunderstorm: var(--squll);
+    --tornado: var(--squll);
+
+    --n-clear: #fd76c9;
+    --n-clouds: #85e3ff;
+    --n-rain: #429eff;
+    --n-snow: var(--d-snow);
+
+    /* main variable */
+    --accent: #ec6e4c;
+    --color: var(--accent);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(24, 24, 24) !important;
+    height: 100vh;
+    /* overflow-y: hidden; */
+    color: white;
+
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.app {
+    width: 1000px;
+    min-height: fit-content;
+    max-height: 90%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    transition: 0.5s;
+}
+
+.popup-area {
+    color: white;
+    position: absolute;
+    z-index: 100;
+    top: 10px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 80%;
+    max-height: 80%;
+    margin: auto;
+    border-radius: 10px;
+    border: 1px solid white;
+    background-color: rgba(0, 0, 0, 0.9);
+    box-shadow: 0px 0px 5px 0px var(--color);
+}
+
+.popup-area .title {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid var(--color);
+    font-size: 1.2rem;
+    margin: 10px 0px;
+    padding-bottom: 5px;
+
+}
+
+.popup-area .icon {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+}
+
+@media only screen and (max-width: 1100px) {
+    .app {
+        width: 90%;
+    }
+}
+
+/* Background-blur effect */
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    .app {
+        -webkit-backdrop-filter: blur(7px);
+        backdrop-filter: blur(7px);
+    }
+
+    .popup-area {
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+    }
+}
+
+.icon {
+    cursor: pointer;
+}
+
+.icon:hover {
+    filter: drop-shadow(0px 0px 5px var(--color));
+}
+
+.icon:active {
+    filter: drop-shadow(0px 0px 1px white);
+}
+
+.active {
+    color: var(--color);
+    filter: drop-shadow(0px 0px 1px var(--color));
+}
+
+/* === Header CSS === */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin: 5px;
+    padding: 5px;
+    border-bottom: 1px solid var(--color);
+}
+
+.left-icon {
+    position: absolute;
+    left: 15px;
+    top: 8px;
+}
+
+.right-icon {
+    position: absolute;
+    right: 15px;
+    top: 8px;
+}
+
+.header-title {
+    color: var(--color);
+    text-align: center;
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+
+/* === Footer CSS === */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    border-top: 1px solid var(--color);
+}
+
+.footer a {
+    color: var(--color);
+}
+
+@media only screen and (max-width: 520px) {
+    .app {
+        max-height: 80%;
+        margin-top: -30px;
+    }
+
+    .popup-area {
+        max-height: 82%;
+        width: 92%;
+    }
+
+    .left-icon {
+        left: 10px;
+        top: 5px;
+    }
+
+    .right-icon {
+        right: 10px;
+        top: 5px;
+    }
+
+    .header {
+        margin: 4px;
+    }
+
+    .header-title {
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .footer {
+        margin: 4px;
+    }
+
+    .footer-title {
+        font-weight: 400;
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    * {
+        font-size: 0.8rem;
+    }
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: var(--color);
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}

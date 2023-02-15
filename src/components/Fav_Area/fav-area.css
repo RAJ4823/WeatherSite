@@ -1,0 +1,40 @@
+.fav-area {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.fav-cities {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-decoration: underline;
+    text-decoration-color: var(--color);
+    overflow-y: scroll;
+}
+
+.fav-city {
+    width: 25%;
+    text-align: center;
+    cursor: pointer;
+    min-width: fit-content;
+    height: fit-content;
+    margin: 10px 20px;
+}
+
+@media only screen and (max-width: 520px) {
+    .fav-area {
+        top: 5px;
+    }
+
+    .fav-area .title {
+        font-size: 1.1rem;
+    }
+
+    .fav-city {
+        font-size: 0.9rem;
+        width: 40%;
+    }
+}

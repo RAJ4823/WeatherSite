@@ -1,0 +1,201 @@
+.setting-area {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    accent-color: var(--color);
+}
+
+.setting-area label {
+    cursor: pointer;
+    word-wrap: break-word;
+}
+
+.setting-area input {
+    --size: 1.3;
+    cursor: pointer;
+    margin: 0px 10px;
+    -ms-transform: scale(var(--size));
+    -webkit-transform: scale(var(--size));
+    transform: scale(var(--size));
+}
+
+.unit-selection {
+    display: flex;
+}
+
+.options {
+    display: flex;
+    height: fit-content;
+    align-items: center;
+    flex-direction: column;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    width: 98%;
+    margin: 5px;
+}
+
+.option {
+    width: 70%;
+    margin: 10px 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.option-text {
+    display: flex;
+    justify-content: space-between;
+}
+
+.option:last-child {
+    display: block;
+}
+
+.thumbnail-images {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.thumbnail-images img {
+    margin: 10px;
+    aspect-ratio: 2/1;
+    height: 60px;
+}
+
+.select-random {
+    display: flex;
+    align-items: center;
+}
+
+.thumbnail-container {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+}
+
+.thumbnail-container input {
+    position: absolute;
+    top: 5px;
+    right: -5px;
+}
+
+/* Turn ON/OFF button */
+.switch {
+    position: relative;
+    display: inline-block;
+    min-width: 40px;
+    height: 20.5px;
+    margin: 0px 7px;
+}
+
+.switch input {
+    opacity: 0;
+    min-width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 3px;
+    bottom: 3px;
+    background-color: black;
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+
+input:checked+.slider {
+    background-color: var(--color);
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px var(--color);
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+}
+
+.slider.round {
+    border-radius: 20px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+@media only screen and (max-width: 520px) {
+    .setting-area input {
+        --size: 1.1;
+    }
+
+    .options {
+        font-size: 0.9rem;
+    }
+
+    .thumbnail-images img {
+        height: 40px;
+    }
+
+    .switch {
+        min-width: 35px;
+        height: 18px;
+        margin: 0px 7px;
+    }
+
+    .slider:before {
+        height: 15px;
+        width: 15px;
+        left: 1.5px;
+        bottom: 1.5px;
+    }
+
+    input:checked+.slider:before {
+        -webkit-transform: translateX(17px);
+        -ms-transform: translateX(17px);
+        transform: translateX(17px);
+    }
+
+    .slider.round {
+        border-radius: 20px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .option {
+        width: 90%;
+    }
+
+    .thumbnail-images img {
+        height: 55px;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .setting-area input {
+        --size: 1.0;
+    }
+
+    .thumbnail-images img {
+        height: 30px;
+    }
+}
