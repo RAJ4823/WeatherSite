@@ -1,20 +1,20 @@
-import react, { useState, useEffect } from "react";
-import WeatherInfoArea from "./components/Weather_Info_Area/WeatherInfoArea";
-import SettingArea from "./components/Setting_Area/SettingArea";
-import SearchArea from "./components/Search_Area/SearchArea";
-import FavArea from "./components/Fav_Area/FavArea";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import { changeDefaultBg, changeDynamicBg } from "./components/ChangeBg";
-import "./app.css";
+import react, { useState, useEffect } from 'react';
+import WeatherInfoArea from './components/Weather_Info_Area/WeatherInfoArea';
+import SettingArea from './components/Setting_Area/SettingArea';
+import SearchArea from './components/Search_Area/SearchArea';
+import FavArea from './components/Fav_Area/FavArea';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import { changeDefaultBg, changeDynamicBg } from './components/ChangeBg';
+import './app.css';
 
 // Change default BG when app is loaded
 changeDefaultBg();
 const API_URL = import.meta.env.VITE_API_URL;
 const API_KEY = import.meta.env.VITE_API_KEY;
 const API_TEMP_UNIT = {
-  c: "metric",
-  f: "imperial",
+  c: 'metric',
+  f: 'imperial',
 };
 
 export default function App() {
@@ -23,9 +23,9 @@ export default function App() {
   const [lat, setLat] = useState(null);
   const [long, setLong] = useState(null);
   const [settings, setSettings] = useState({
-    dynamicBg: localStorage.getItem("dynamicBg") || "4",
-    defaultBg: localStorage.getItem("defaultBg") || "ON",
-    temp_unit: localStorage.getItem("temp_unit") || "c",
+    dynamicBg: localStorage.getItem('dynamicBg') || '4',
+    defaultBg: localStorage.getItem('defaultBg') || 'ON',
+    temp_unit: localStorage.getItem('temp_unit') || 'c',
   });
 
   const [popup, setPopup] = useState({
@@ -54,7 +54,7 @@ export default function App() {
     } else {
       setIsLoading(false);
       let __confirm = confirm(
-        "Location permission is not granted. Would you want to give permission?"
+        'Location permission is not granted. Would you want to give permission?'
       );
       if (__confirm) fetchLocation();
       return;
@@ -66,16 +66,18 @@ export default function App() {
     ]).then((res) => {
       setIsLoading(false);
       if (res[0].cod !== 200) {
-        document.documentElement.style.setProperty("--color", `RED`);
-        alert("Searched City Name Is Invalid or It Does Not Exist");
+        document.documentElement.style.setProperty('--color', `RED`);
+        alert('Searched City Name Is Invalid or It Does Not Exist');
         return;
       }
 
+      let cityNameTitle = res[0].name;
+      res[0].sys.country ? (cityNameTitle += ', ' + res[0].sys.country) : '';
       changeDynamicBg(res[0]);
       setData({
         currentWeather: res[0],
         hourlyForecast: res[1],
-        headerTitle: res[0].name + ", " + res[0].sys.country,
+        headerTitle: cityNameTitle,
       });
     });
   };
@@ -110,7 +112,7 @@ export default function App() {
     let newSettings = { ...settings, [key]: value };
     localStorage.setItem(key, value);
     setSettings(newSettings);
-    if (key === "defaultBg") changeDefaultBg();
+    if (key === 'defaultBg') changeDefaultBg();
   }
 
   return (
@@ -122,7 +124,7 @@ export default function App() {
         <SettingArea onClose={closeArea} onChange={changeSettings} />
       )}
       <Header
-        title={data ? data.headerTitle : "Weather Site"}
+        title={data ? data.headerTitle : 'Weather Site'}
         onBack={gotoSearchArea}
         onToggleFav={toggleFavArea}
         onToggleSetting={toggleSettingArea}
